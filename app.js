@@ -51,10 +51,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", express.static(path.resolve(__dirname, "client/dist/FadlZad")));
-app.use('/auth', userRoutes);
-app.use('/category', categoriesRoutes);
-app.use('/product', productRoutes);
-app.post('/contact', (req, res) => {
+app.use('/api/auth', userRoutes);
+app.use('/api/category', categoriesRoutes);
+app.use('/api/product', productRoutes);
+app.post('/api/contact', (req, res) => {
   try {
     mailer.sendMailCaontactUs(
       req.body.name,
