@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "heroku-postbuild": "cd client && npm install --force && npm run build --force",
+    "heroku-postbuild": "cd client && npm install --force && npm run build",
     "start": "node ./bin/www"
   },
   "dependencies": {
