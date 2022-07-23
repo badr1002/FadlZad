@@ -1,7 +1,6 @@
 import { ProductService } from 'src/app/pages/products/product.service';
 import { Component, OnInit, AfterContentChecked } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import * as async from 'async'
 @Component({
   selector: 'app-add-new-product',
   templateUrl: './add-new-product.component.html',
@@ -20,10 +19,10 @@ export class AddNewProductComponent implements OnInit {
   images: any = []
   cloudImages: any = []
   uploadedFiles: any[] = [];
-  isAdmin:boolean = false
+  isAdmin: boolean = false
   constructor(private _productService: ProductService) {
     this.isAdmin = JSON.parse(localStorage.getItem('user'))?.isAdmin ? true : false
-   }
+  }
   ngOnInit(): void {
     this.getAllCategories()
   }
@@ -130,62 +129,38 @@ export class AddNewProductComponent implements OnInit {
     }
     this._productService.addProduct(this._getProduct).subscribe(res => {
       if (res.apiStatus) {
-        let i = 1
-        async.eachSeries(this.images, (image: any, next) => {
-
+        let i = this.images.length
+        for (let image of this.images) {
           this._productService.uploadProductImagesCloud(image, res.data._id, i, (err: any, data: any) => {
             if (!err) {
               this.cloudImages.push(data)
-              i++
-              next()
+              i--
+              if (i === 0) {
+                let product = res.data
+                product.images = this.cloudImages
+                this._productService.editProduct(product).subscribe(
+                  res => {
+                    if (res.apiStatus) {
+                      this.alert = 'success';
+                      this.msg = res.msg;
+                      setTimeout(() => {
+                        this.msg = '';
+                        this.product.controls['p_name'].setValue('')
+                        this.product.controls['categoryName'].setValue('')
+                        this.product.controls['p_description'].setValue('')
+                        this.product.controls['category'].get('catName').setValue('')
+                        this.product.controls['category'].get('catDescription').setValue('')
+                        this.images = []
+                      }, 2000);
+                    }
+                  }
+                )
+              }
             }
           })
-        }).then(() => {
-          let product = res.data
-          product.images = this.cloudImages
-          this._productService.editProduct(product).subscribe(
-            res => {
-              if (res.apiStatus) {
-                this.alert = 'success';
-                this.msg = res.msg;
-                setTimeout(() => {
-                  this.msg = '';
-                  this.product.controls['p_name'].setValue('')
-                  this.product.controls['categoryName'].setValue('')
-                  this.product.controls['p_description'].setValue('')
-                  this.product.controls['category'].get('catName').setValue('')
-                  this.product.controls['category'].get('catDescription').setValue('')
-                  this.images = []
-                }, 2000);
-              }
-            },
-            (err) => {
-              this.alert = 'danger';
-              this.msg = 'SomeThing wrong!';
-              setTimeout(() => {
-                this.msg = '';
-                this.images = []
-              }, 2000);
-            }
-          )
-
-        }).catch(err => {
-          this.alert = 'danger';
-          this.msg = 'SomeThing wrong!';
-          setTimeout(() => {
-            this.msg = '';
-            this.images = []
-          }, 2000);
-        })       
+        }
       }
-    },
-      (err) => {
-        this.alert = 'danger';
-        this.msg = err.error.msg;
-        setTimeout(() => {
-          this.msg = '';
-        }, 2000);
-      })
-  }
+    })
 
+  }
 }

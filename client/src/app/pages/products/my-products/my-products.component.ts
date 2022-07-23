@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { PrimeNGConfig, SelectItem } from 'primeng/api';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
-import * as async from 'async'
 
 @Component({
   selector: 'app-my-products',
@@ -102,8 +101,8 @@ export class MyProductsComponent implements OnInit {
       this.productService.deleteProduct(product._id).subscribe((res) => {
         if (res.apiStatus) {
 
-          let i = 1
-          async.eachSeries(product.images, (image, next) => {
+          let i = product.images.length
+          for (let image of product.images) {
             this.productService.deleteProductImageCloud(product._id, image, i, (err: any, data: any) => {
               if (err) {
                 this.alert = 'danger';
@@ -113,16 +112,17 @@ export class MyProductsComponent implements OnInit {
                   this.msg = '';
                 }, 2000);
               } else {
-                i++
-                next()
+                i--
+                if (i === 0) {
+                  this.products = this.products.filter(a => a._id != product._id);
+                  this.sortedProdect = this.products;
+                  this.count = res.length;
+                  this.loading = false
+                }
               }
             })
-          }).then(() => {
-            this.products = this.products.filter(a => a._id != product._id);
-            this.sortedProdect = this.products;
-            this.count = res.length;
-            this.loading = false
-          })
+          }
+
         }
       });
     }
