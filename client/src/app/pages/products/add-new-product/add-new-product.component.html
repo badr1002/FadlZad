@@ -1,0 +1,148 @@
+
+<div class="container">
+    <div class="row gutters">
+        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+            <div class="card h-100">
+                <form class="card-body" [formGroup]="product">
+                    <div class="row gutters">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12
+                            col-12">
+                            <h4 class="mb-2 text-primary alert alert-secondary">{{'addNewProduct.addnewProduct' | translate}}</h4>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12"
+                            *ngIf="!addCategoryStatus">
+                            <div class="row">
+                                <label>{{'addNewProduct.Category' | translate}}</label>
+                                <div class="col-lg-11">                                    
+                                    <select class="form-select" formControlName="categoryName"
+                                        [(ngModel)]="selectedCategory">
+                                        <option [ngValue]="null"  disabled> {{'addNewProduct.chooseCategory' | translate}}
+                                            </option>
+                                        <option [value]="cat['name']"
+                                            *ngFor="let
+                                            cat of allCategories">
+                                            {{cat['name']}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-1" *ngIf="isAdmin">
+                                    <div class="text-right">
+                                        <button type="button" id="submit"
+                                            name="submit"
+                                            class="btn
+                                            btn-primary ms-2"
+                                            (click)="showAddCategoryField()">+</button>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12"
+                            *ngIf="addCategoryStatus">
+                            <div class="form-group" formGroupName="category">
+                                <div class="form-group">
+                                    <label for="Category">{{'addNewProduct.Category' | translate}}</label>
+                                    <input type="text" class="form-control"
+                                        id="Category"
+                                        placeholder="Category Name"
+                                        formControlName="catName">
+                                </div>
+                                <div class="form-group">
+                                    <label>{{'addNewProduct.Description' | translate}}</label>
+                                    <textarea class="form-control" #val rows="3"
+                                        placeholder="Description for category"
+                                        maxlength="150"
+                                        formControlName="catDescription"></textarea>
+                                </div>
+                                <div class="row gutters">
+                                    <div class="text-right m-2">
+                                        <button type="button" id="submit"
+                                            name="submit"
+                                            class="btn
+                                            btn-primary ms-2"
+                                            (click)="addCategory($event)">{{'addNewProduct.addCategory' | translate}}</button>
+                                            <button type="button" id="submit"
+                                            name="submit"
+                                            class="btn
+                                            btn-warning ms-2"
+                                            (click)="cancelCategoryAddation()">{{'addNewProduct.cancel' | translate}}</button>
+                                    </div>
+                                    <div class="col-lg-1">
+                                     
+                                </div>
+                                    <div class="alert alert-{{alert}}"
+                                        *ngIf="msg">{{msg}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <!-- <h4 class="mb-2 text-primary alert alert-secondary">{{'addNewProduct.addNewProduct' | translate}}</h4> -->
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6
+                                col-12">
+                                <div class="form-group">
+                                    <label for="name">{{'addNewProduct.name' | translate}}</label>
+                                    <input type="text" class="form-control"
+                                        id="name"
+                                        placeholder="Name"
+                                        formControlName="p_name">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6
+                                col-12">
+                                <div class="form-group">
+                                    <div class="form-group">
+                                        <label>{{'addNewProduct.Description' | translate}}</label>
+                                        <textarea class="form-control" #val
+                                            rows="3"
+                                            placeholder="Description for
+                                            product"
+                                            maxlength="150"
+                                            formControlName="p_description"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6
+                                col-12">
+                                <div class="mb-3">
+                                    <label for="image">{{'addNewProduct.img1' | translate}} </label>
+                                    <input type="file" accept="image/*"   class="form-control"
+                                        id="image"  (change)="onFileSelected($event)">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image">{{'addNewProduct.img2' | translate}} </label>
+                                    <input type="file" accept="image/*" class="form-control"
+                                        id="image" (change)="onFileSelected($event)" >
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image">{{'addNewProduct.img3' | translate}} </label>
+                                    <input type="file" accept="image/*" class="form-control"
+                                        id="image" (change)="onFileSelected($event)">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image">{{'addNewProduct.img4' | translate}}</label>
+                                    <input type="file" accept="image/*" class="form-control"
+                                        id="image" (change)="onFileSelected($event)">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="image">{{'addNewProduct.img5' | translate}} </label>
+                                    <input type="file" accept="image/*" class="form-control"
+                                        id="image" (change)="onFileSelected($event)">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row gutters">
+                        <div class="text-center m-3">
+                            <button type="button" id="submit" name="submit"
+                                class="btn
+                                btn-primary ms-2"
+                                (click)="addProduct($event)">{{'addNewProduct.save' | translate}}</button>
+                        </div>
+                        <div class="alert alert-{{alert}}" *ngIf="msg">{{msg}}</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

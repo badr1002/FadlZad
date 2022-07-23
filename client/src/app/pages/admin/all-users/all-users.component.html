@@ -1,0 +1,104 @@
+
+<div class="container">
+  <!-- <app-sidebar></app-sidebar> -->
+  <div class="row">
+    <div>
+
+      <div class="container-fluid">
+        <div class="card shadow">
+          <div class="card-header py-3">
+            <p class="text-primary m-0 fw-bold">{{'admin.userInfo' | translate}}</p>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 text-nowrap">
+                <div id="dataTable_length" class="dataTables_length"
+                  aria-controls="dataTable">
+                  <label class="form-label">{{'admin.show' | translate}}&nbsp;
+                    <select class="d-inline-block form-select form-select-sm"
+                      [(ngModel)]="selectedLimit">
+                      <option [value]='limit' *ngFor="let limit of limits">
+                        {{limit}}
+                      </option>
+                    </select>
+                    &nbsp;
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="text-md-end dataTables_filter"
+                  id="dataTable_filter"><label class="form-label"><input
+                      type="search" class="form-control form-control-sm"
+                      aria-controls="dataTable" placeholder="{{'admin.search' | translate}}"
+                      [(ngModel)]="search_term"
+                      (ngModelChange)="handleSearch()"></label></div>
+              </div>
+            </div>
+            <div class="table-responsive table mt-2" id="dataTable"
+              role="grid"
+              aria-describedby="dataTable_info">
+              <!-- <div class="alert alert-primary m-2" *ngIf="!loading">{{'loading' | translate}}</div> -->
+              <table class="table my-0" id="dataTable" >
+                <thead>
+                  <tr>
+                    <th>{{'user.name' | translate}}</th>
+                    <th>{{'user.email' | translate}}</th>
+                    <th>{{'user.mobile' | translate}}</th>
+                    <th>{{'user.createdAt' | translate}}</th>
+                    <th>{{'admin.modify' | translate}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of users | paginate: { itemsPerPage:
+                    selectedLimit, currentPage: p }">
+                    <td><img class="rounded-circle me-2" width="30"
+                        height="30"
+                        [src]="item.image?'../../../../assets/uploads/profile/'+item.image:'assets/img/avatars/avatar1.jpeg'">
+                      {{item.name}}<span *ngIf="!item.status" class="disable">{{'admin.disabled' | translate}}</span></td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.mobile}}</td>
+                    <td>{{item.createdAt}}</td>
+                    <td>
+                      <button class="btn btn-primary btn-sm"
+                        (click)="enableUser(item._id)" [hidden]="item.role === 'adf0c9ad82601330d46ec62a'" *ngIf="!item.status">{{'admin.enable' | translate}}</button>
+                      <button class="btn btn-outline-danger btn-sm" [hidden]="item.role === 'adf0c9ad82601330d46ec62a'"
+                        (click)="disableUser(item._id)" *ngIf="item.status">{{'admin.disable' | translate}}</button>
+                        <span *ngIf="item.role === 'adf0c9ad82601330d46ec62a'" class="text-info">{{'admin.admin' | translate}}</span>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot></tfoot>
+              </table>
+            </div>
+            <div class="row">
+              <div class="col-md-6 align-self-center">
+                <p id="dataTable_info" class="dataTables_info" role="status"
+                  aria-live="polite">{{'admin.showing' | translate}} {{p}} {{'admin.to' | translate}} {{selectedLimit}} {{'admin.of' | translate}}
+                  {{users.length}}</p>
+              </div>
+
+              <div class="col-md-6">
+                <nav class="d-lg-flex justify-content-lg-end
+                  dataTables_paginate
+                  paging_simple_numbers">
+
+                  <div class="pagination">
+                    <pagination-controls (pageChange)="p= $event"></pagination-controls>
+                  </div>
+
+                </nav>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="list">
+		<ul>
+			<li *ngFor="let item of users | paginate: { itemsPerPage: 1, currentPage: p }">{{ item.name }}</li>
+		</ul>
+
+		<pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div> -->

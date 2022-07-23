@@ -1,0 +1,40 @@
+****** User *******>
+Register   ok
+Login       ok
+User activatation   ok
+ForgetPassword    ok
+Change Password   ok
+Add profile image  ok
+Delete profile image  ok
+Edit profile    ok
+
+***** Products ****>
+Add new product   ok
+View last 10 products  ok
+View all products   ok
+View Selected product   ok
+View my products   ok
+Delete my selected product  ok
+Search for products ok
+
+****** Admin *****>
+View all users  ok
+Enable user   ok
+Disable user  ok
+check if user in enable or disable when login  ok
+View all products  ok
+Delete an product  ok
+Hide product  ok
+Show product  ok
+
+
+
+****** translatation ***>
+ar  ok
+en   ok
+
+
+***** mails ***>
+Send activation  ok
+Send change password code  ok
+Send Feadback  ok

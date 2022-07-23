@@ -1,0 +1,19 @@
+.product-item {
+  .product-item-content {
+    border: 1px solid var(--surface-d);
+    border-radius: 3px;
+    margin: .3rem;
+    text-align: center;
+    padding: 2rem 0;
+    transition: 0.5s;
+    cursor: pointer;
+  }
+.product-item-content:hover{
+  background-color: rgb(26, 95, 72, 0.3);
+    border-radius: 5%;
+}
+  .product-image {
+    width: 50%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+  }
+}

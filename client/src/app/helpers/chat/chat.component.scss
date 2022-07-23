@@ -1,0 +1,49 @@
+
+.chat-icon {
+  position: fixed;
+  top: 75%;
+  right: 15px;
+  max-width: 50px;
+  max-height: 50px;
+  cursor: pointer;
+}
+ .chat-form{
+    position: fixed;
+    top: 40%;
+    right: 15px;
+    z-index: 999999;
+    width: 400px;
+    height: 400px;
+    border-radius: 25px;
+    box-shadow: 2px 2px 2px 2px rgb(192, 190, 190);
+    background-color: rgb(7, 150, 50);
+ }
+.fa-arrow-down{
+  position: absolute;
+  top: 5px;
+  right: 46%;
+  cursor: pointer;
+  padding: 5px;
+  color: rgb(69, 134, 3);
+  background-color: aliceblue;
+  border-radius: 100%;
+  transition: .5s;
+}
+.fa-arrow-down:hover{
+background-color: rgb(53, 167, 7);
+  color: rgb(175, 158, 6);
+
+}
+
+@media screen And (max-width:792px) {
+  .chat-form{
+     position: fixed;
+     top: 30%;
+     right: 15px;
+  }
+  .chat-icon {
+    position: fixed;
+    top: 75%;
+    right: 15px;
+  }
+}

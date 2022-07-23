@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-12">
+            <p-carousel class="mt-5" [value]="images" [numVisible]="3"
+                [numScroll]="3"
+                [circular]="false" [responsiveOptions]="responsiveOptions">
+                <ng-template pTemplate="header">
+                </ng-template>
+                <ng-template let-image pTemplate="item">
+                    <div class="product-item">
+                        <div class="product-item-content">
+                            <div class="mb-3">
+                                <img
+                                    [src]="image"
+                                    [alt]="'...'"
+                                    class="product-image" />
+                            </div>
+
+                        </div>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
+
+        <div class="col-lg-12">
+            <div class="product-grid-item-content">
+                <div class="product-name">{{'addNewProduct.name' | translate}}: {{product?.name}}</div>
+                <div class="product-description">{{'viewProducts.description' | translate}}: {{product?.description}}</div>
+                <div class="product-description">{{'viewProducts.createdBy' | translate}}: <strong>{{product?.uploadedWith?.name}}</strong></div>
+                <div class="product-description">{{'viewProducts.phone' | translate}}: <strong>{{user?.mobile}}</strong></div>
+              
+            </div>
+        </div>
+    </div>
+</div>

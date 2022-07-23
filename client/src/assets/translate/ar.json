@@ -1,0 +1,169 @@
+{
+    "Logo": "فاضل زاد",
+    "loading": "جار التحميل...",
+    "nav": {
+        "aboutUs": "معلومات عنا",
+        "Contact": "اتصال بنا",
+        "Add": "اضف اعلان",
+        "Login": "تسجيل الدخول",
+        "Search": "يبحث",
+        "Profile": "الملف الشخصي",
+        "myAds": "إعلاناتي",
+        "Dashboard": "لوحة القيادة",
+        "Logout": "تسجيل خروج",
+        "ar": "عربي",
+        "en": "Engilsh"
+    },
+    "home": {
+        "lastShared": "آخر الإعلانات المشتركة",
+        "allAds": "جميع الاعلانات",
+        "newAds": "إعلانات جديدة"
+    },
+    "viewProducts": {
+        "searchByName": "البحث عن طريق الإسم",
+        "searchByCategory": "البحث حسب الفئة",
+        "createdBy": "انشأ من قبل",
+        "You": "أنت",
+        "delete": "حذف",
+        "name": "الاسم",
+        "description": "الوصف",
+        "phone": "رقم الهاتف",
+        "status": "الحالة",
+        "createdDate": "تاريخ الإنشاء",
+        "display": "العرض"
+    },
+    "addNewProduct": {
+        "addnewProduct": "اضافة منتج جديد",
+        "Category": "الفئة",
+        "chooseCategory": "اختر الفئة",
+        "Description": "الوصف",
+        "addCategory": "إضافة فئة",
+        "cancel": "الغاء",
+         "name": "الاسم",
+        "img1": "إضافة صورة1",
+        "img2": "إضافة صورة2",
+        "img3": "إضافة صورة3",
+        "img4": "إضافة صورة4",
+        "img5": "إضافة صورة5",
+        "save": "أضف منتج"
+    },
+    "forgetPassword": {
+        "setNewPassword": "قم بتعيين كلمة مرور جديدة",
+        "sentSatatusCode": "تحقق من بريدك الإلكتروني ، لقد أرسلنا لك الرمز",
+        "code": "شفرة",
+        "check": "يفحص",
+        "set": "تعيين"
+    },
+    "user": {
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة السر",
+        "mobile": "الجوال",
+        "gender": "النوع",
+        "male": "ذكر",
+        "female": "أنثى",
+        "country": "البلد",
+        "address": {
+            "address": "العنوان",
+            "city": "المدينة",
+            "zipCode": "الرمز البريدي",
+            "state": "الولاية",
+            "street": "الشارع"
+        },
+        "createdAt": "تاريخ البدء"
+    },
+    "warning": {
+        "emailRequired": "البريد الالكتروني مطلوب!",
+        "invaildMail": "تنسيق البريد الإلكتروني غير صالح",
+        "passwordRequired": "كلمة المرور مطلوبة!",
+        "invaildPassword": "يجب أن تكون كلمة المرور أكثر من 6 أحرف",
+        "nameRequired": "الاسم مطلوب!",
+        "mobileRequired": "الجوال مطلوب!",
+        "subjectRequired": "الموضوع مطلوب!",
+        "messageRequired": "الرسالة مطلوبة!"
+    },
+    "mail": {
+        "subject": "الموضوع",
+        "message": "الرسالة",
+        "send": "أرسل رسالة"
+    },
+    "error": {
+        "activatation": "من فضلك ، تحقق من حسابك أرسلنا لك رمز التفعيل!",
+        "_404": "خطأ 404 - لم يتم العثور على الصفحة!"
+    },
+    "login": {
+        "login": "تسجيل الدخول",
+        "haveAccount": "هل لديك حساب",
+        "welcome": "مرحبًا بعودتك",
+        "loginGoogle": "تسجيل الدخول عبر جوجل",
+        "loginFacebook": "تسجيل الدخول باستخدام الفيسبوك",
+        "forgetPassword": "نسيت كلمة المرور",
+        "create": "انشئ حساب"
+    },
+    "register": {
+        "registerAccount": "تسجيل حساب",
+        "registerGoogle": "التسجيل في جوجل",
+        "registerFacebook": "سجل في الفيسبوك"
+    },
+    "profile": {
+        "delete": "حذف",
+        "about": "حول",
+        "personalDetails": "تفاصيل شخصية",
+        "addCity": "أضف مدينة",
+        "addStreet": "أضف شارع",
+        "addZipCode": "أضف الرمز البريدي",
+        "addState": "أضف دولة",
+        "someAbout": "البعض عنا",
+        "changePassword": "غير كلمة السر",
+        "currentPassword": "كلمة المرور الحالية",
+        "newPassword": "كلمة السر الجديدة",
+        "update": "تحديث"
+    },
+    "contact": {
+        "contactUs": "اتصل بنا",
+        "location": "الموقع",
+        "bns": "بني سويف",
+        "street": "شارع صلاح سالم",
+        "openAt": "ساعات مفتوحة",
+        "date": "الاثنين الى السبت",
+        "call": "اتصال"
+    },
+    "about": {
+        "aboutUs": "معلومات عنا",
+        "ourGoals": "هدفنا تسهيل إيصال التبرعات الخيرية للفقراء",
+        "poweredBy": "مشغل بواسطة",
+        "team": "فريق الطلاب",
+        "questionIdea": "ما هي فكرة هذا الموقع؟",
+        "idea": "يمكن للفقير فقط جمع التبرعات التي يحتاجها دون الذهاب إلى أي مكان. كل ما عليه هو الدخول ومشاهدة الإعلانات والتواصل مع المعلن لطلب هذا التبرع.",
+        "showMore": "أظهر المزيد",
+        "questionBenefits": "ما هي فوائد إنشاء هذا الموقع؟",
+        "benefits": "هذه منظمة غير ربحية ، هدفنا هو تسهيل الأمر على الفقراء ، وكل فقير يأخذ احتياجاته فقط.",
+        "ourTeam": "فريقنا",
+        "happyMsg": "يسعدنا الاتصال بنا لتقديم مقترحات جديدة.",
+        "frontEnd": "مطور الواجهة الأمامية",
+        "backEnd": "المطور الخلفي",
+        "Marwa": "مروة ",
+        "Magda": "ماجدة ",
+        "Hossam": "حسام ",
+        "Ahmed": "احمد ",
+        "Fatma": "فاطمة  ",
+        "Yasmine": "ياسمين "
+    },
+    "admin": {
+        "adsInfo": "معلومات الإعلانات",
+        "userInfo": "معلومات المستخدمين",
+        "show": "يعرض",
+        "hide": "اخفاء",
+        "showing": "عرض",
+        "to": "إلى",
+        "of": "من",
+        "search": " ابحث",
+        "modify": "تعديل",
+        "disabled": "معطل",
+        "disable": "تعطيل",
+        "enable": "تشغيل",
+        "admin": "مسؤل",
+        "users":"المستخدمين",
+        "ads":"الإعلانات"
+    }
+}

@@ -1,0 +1,105 @@
+ <section id="contact" class="contact">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-12"> <div class="section-title">
+          <h2 class="text-warning m-4">{{'contact.contactUs' | translate}}</h2>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="map">
+          <iframe
+            style="border:0; width: 100%; height: 350px"
+            title='contact'
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
+            frameBorder="0"
+            allowFullScreen></iframe>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="container mt-5">
+
+          <div class="info-wrap">
+            <div class="row">
+              <div class="col-lg-3 col-md-6 info">
+                <i class="bi bi-geo-alt"></i>
+                <h4>{{'contact.location' | translate}}</h4>
+                <p>{{'contact.street' | translate}}<br/>{{'contact.bns' | translate}}</p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                  <i class="bi bi-clock"></i>
+                  <h4>{{'contact.openAt' | translate}}</h4>
+                  <p>{{'contact.date' | translate}}<br/>11:00 AM - 2300 PM</p>
+                  </div>
+
+                  <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                    <i class="bi bi-envelope"></i>
+                    <h4>{{'user.email' | translate}}</h4>
+                    <p>fadel.zad@gmail.com</p>
+                  </div>
+
+                  <div class="col-lg-3 col-md-6 info mt-4 mt-lg-0">
+                    <i class="bi bi-phone"></i>
+                    <h4>{{'contact.call' | translate}}</h4>
+                    <p>+2- 01555555555<br/>+2- 011111111111</p>
+                    </div>
+                  </div>
+                </div>
+
+                <form  class="form-group" [formGroup]="contactForm" (ngSubmit)="handleSendMessgae()">
+                  <div class="row">
+                    <div class="col-md-6 form-group">
+                      <input type="text" class="form-control" placeholder=" {{'user.name' | translate}}" formControlName='name'/>
+                        <div class="col-12 alert alert-danger form-control-user"
+                          *ngIf="contactForm.get('name')?.invalid
+                          &&(contactForm.get('name')?.dirty || contactForm.get('name')?.touched)">
+                          <div *ngIf="contactForm.get('name')?.errors?.['required']">
+                           {{'warning.nameRequired' | translate}}
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group mt-3 mt-md-0">
+                        <input type="email" class="form-control" placeholder="example@gmail.com" formControlName='email'/>
+                         <div class="col-12 alert alert-danger form-control-user"
+                          *ngIf="contactForm.get('email')?.invalid
+                          &&(contactForm.get('email')?.dirty || contactForm.get('email')?.touched)">
+                          <div *ngIf="contactForm.get('email')?.errors?.['required']">
+                            {{'warning.emailRequired' | translate}}
+                          </div>
+                          <div *ngIf="contactForm.get('email')?.errors?.['email']">
+                            {{'warning.invaildMail' | translate}}
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="form-group mt-3">
+                   <input type="text" class="form-control"  placeholder=" {{'mail.subject' | translate}}" formControlName='sub'/>
+                    <div class="col-12 alert alert-danger form-control-user"
+                          *ngIf="contactForm.get('sub')?.invalid
+                          &&(contactForm.get('sub')?.dirty || contactForm.get('sub')?.touched)">
+                          <div *ngIf="contactForm.get('sub')?.errors?.['required']">
+                           {{'warning.subjectRequired' | translate}}
+                          </div>
+                        </div>
+                  </div>
+                  <div class="form-group mt-3">
+                    <textarea
+                      class="form-control"
+                      rows="5"
+                       placeholder="{{'mail.message' | translate}}" formControlName='message'></textarea>
+                       <div class="col-12 alert alert-danger form-control-user"
+                          *ngIf="contactForm.get('message')?.invalid
+                          &&(contactForm.get('message')?.dirty || contactForm.get('message')?.touched)">
+                          <div *ngIf="contactForm.get('message')?.errors?.['required']">
+                           {{'warning.messageRequired' | translate}}
+                          </div>
+                        </div>
+                  </div>
+                    <button class="btn btn-primary m-3" type="submit">{{'mail.send' | translate}}</button>
+                </form>
+                <div *ngIf="msg" class="alert alert-{{alert}}">{{msg}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>

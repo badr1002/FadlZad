@@ -1,0 +1,26 @@
+.social-link {
+  width: 10px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  border-radius: 50%;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+  margin: 5px;
+}
+
+.social-link:hover,
+.social-link:focus {
+  background: #ddd;
+  text-decoration: none;
+  color: #555;
+  width: 10px;
+  height: 10px;
+}
+.social-link_1{
+    width: 25px;
+      height: 25px;
+        border-radius: 50%;
+}

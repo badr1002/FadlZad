@@ -1,0 +1,90 @@
+
+
+<!-- <div class="alert alert-primary m-2" *ngIf="!loading">{{'loading' | translate}}</div> -->
+
+<div class="card" >
+  <p-dataView #dv [value]="sortedProdect" [paginator]="true" [first]="first"
+    [rows]="rows" [rowsPerPageOptions]="[18,36,54]" [totalRecords]="count"
+    class="grid-view" filterBy="name"
+    [sortField]="sortField" [sortOrder]="sortOrder" layout="grid">
+
+    <!--- Sorting-->
+    <ng-template pTemplate="header">
+      <div class="flex flex-column md:flex-row md:justify-content-between">
+        <span class="p-input-icon-left p-m-2 p-mb-md-0">
+          <i class="pi pi-search"></i>
+          <input type="search" pInputText placeholder="{{'viewProducts.searchByName' | translate}}"
+            (input)="dv.filter(getTarget($event))">
+        </span>
+
+        <p-dropdown id="cat" [options]="sortCategoryOptions"
+          [(ngModel)]="sortKey"
+          placeholder="{{'viewProducts.searchByCategory' | translate}}" (onChange)="onSortChange($event)"
+          class="p-mb-2 p-mb-md-0 p-m-5"></p-dropdown>
+
+        <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+      </div>
+    </ng-template>
+
+
+    <ng-template let-product pTemplate="listItem">
+      <div class="col-12">
+        <div class="product-grid-item-top">
+          <div>
+            <i class="pi pi-tag product-category-icon"></i>
+            <span class="product-category">{{product.type}}</span>
+          </div>
+          <!-- <span [class]="'product-badge status-' +
+              product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span> -->
+        </div>
+        <div class="product-list-item" (click)="openProductView(product._id)">
+          <img [src]="product.images[0]"
+            [alt]="'...'" />
+          <div class="product-list-detail">
+            <div class="product-name">{{product.name}}</div>
+            <div class="product-description">{{product.description}}</div>
+            <div class="product-description">{{'viewProducts.createdBy' | translate}}: <strong>{{product.uploadedWith.name}}</strong></div>
+            <!-- <p-rating [ngModel]="product.rating" [readonly]="true"
+              [cancel]="false"></p-rating>
+            <i class="pi pi-tag product-category-icon"></i><span
+              class="product-category">{{product.category}}</span> -->
+          </div>
+          <!-- <div class="product-list-action">
+            <span class="product-price">${{product.price}}</span>
+            <p-button icon="pi pi-shopping-cart" label="Add to Cart"
+              [disabled]="product.inventoryStatus === 'OUTOFSTOCK'"></p-button>
+            <span [class]="'product-badge status-' +
+              product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span>
+          </div> -->
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template let-product pTemplate="gridItem">
+      <div class="col-12 md:col-4">
+        <div class="product-grid-item card">
+          <div class="product-grid-item-top">
+            <div>
+              <i class="pi pi-tag product-category-icon"></i>
+              <span class="product-category">{{product.type}}</span>
+            </div>
+            <!-- <span [class]="'product-badge status-' +
+              product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span> -->
+          </div>
+          <div class="product-grid-item-content"
+            (click)="openProductView(product._id)">
+            <img
+              [src]="product.images[0]"
+              [alt]="'...'" />
+            <div class="product-name">{{product.name}}</div>
+            <div class="product-description">{{product.description}}</div>
+            <div class="product-description">{{'viewProducts.createdBy' | translate}}: <strong>{{product.uploadedWith.name}}</strong></div>
+            <!-- <p-rating [ngModel]="product.rating" [readonly]="true"
+              [cancel]="false"></p-rating> -->
+          </div>
+
+        </div>
+      </div>
+    </ng-template>
+  </p-dataView>
+</div>

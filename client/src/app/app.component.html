@@ -1,0 +1,14 @@
+
+<app-navbar></app-navbar>
+<app-chat></app-chat>
+<router-outlet></router-outlet>
+<span class="border rounded d-inline mb-5 scroll-to-top"
+  *ngIf="arrowStatus"
+  style="display:block; z-index:999; transition: 1.5s;cursor: pointer;"
+  (click)="goUpHandler($event)"><i class="fas fa-angle-up"></i>
+</span>
+<app-footer></app-footer>
+<app-loading-page [screenLoading]="screenLoading"></app-loading-page>
+
+
+

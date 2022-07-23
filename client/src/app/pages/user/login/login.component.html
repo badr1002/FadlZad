@@ -1,0 +1,97 @@
+<div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-9 col-lg-12 col-xl-10">
+        <div class="card shadow-lg o-hidden border-0 my-5">
+          <div class="card-body p-0">
+            <div class="row">
+              <div class="col-lg-6 d-none d-lg-flex">
+                <div class="flex-grow-1 bg-login-image" style="background-image:
+                  url(&quot;assets/img/login.jpg&quot;); background-repeat:
+                  no-repeat;
+                  background-size: auto;"></div>
+              </div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h4 class="text-dark mb-4">{{'login.welcome' | translate}}</h4>
+                  </div>
+                  <form class="user" [formGroup]="login"
+                    (ngSubmit)="handleSubmit()">
+                    <div class="mb-3">
+
+                      <div class="form-control-user alert alert-danger"
+                        *ngIf="msg">
+                        {{msg}}
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <span class="input-group-text form-control-user">{{'user.email' | translate}}</span>
+                        <input type="email" class="form-control
+                          form-control-user"
+                          placeholder="email@example.com"
+                          formControlName="email">
+
+                        <div class="col-12 alert alert-danger form-control-user"
+                          *ngIf="email?.invalid
+                          &&(email?.dirty || email?.touched)">
+                          <div *ngIf="email?.errors?.['required']">
+                            {{'warning.emailRequired' | translate}}
+                          </div>
+                          <div *ngIf="email?.errors?.['email']">
+                            {{'warning.invaildMail' | translate}}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <span class="input-group-text form-control-user">{{'user.password' | translate}}</span>
+                        <input type="password" class="form-control
+                          form-control-user"
+                          id="staticEmail" placeholder="******"
+                          formControlName="password">
+
+                        <div class="col-12 alert alert-danger form-control-user"
+                          *ngIf="password?.invalid
+                          &&(password?.dirty || password?.touched)">
+                          <div *ngIf="password?.errors?.['required']">
+                             {{'warning.passwordRequired' | translate}}
+                          </div>
+                          <div *ngIf="password?.errors?.['minLength']">
+                           {{'warning.invaildPassword' | translate}}
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+                    <!-- <div class="mb-3">
+                      <div class="custom-control custom-checkbox small">
+                        <div class="form-check"><input class="form-check-input
+                            custom-control-input" type="checkbox"
+                            id="formCheck-1"><label class="form-check-label
+                            custom-control-label" for="formCheck-1">Remember Me</label></div>
+                      </div>
+                    </div> -->
+                    <button class="btn btn-primary d-block btn-user w-100"
+                      type="submit">{{'login.login' | translate}} </button>
+                    <hr><a class="btn btn-primary d-block btn-google btn-user
+                      w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp;
+                      {{'login.loginGoogle' | translate}}</a><a class="btn btn-primary d-block
+                      btn-facebook btn-user w-100" role="button"><i class="fab
+                        fa-facebook-f"></i>&nbsp; {{'login.loginFacebook' | translate}}</a>
+                    <hr>
+                  </form>
+                  <div class="text-center"><a class="small"
+                      routerLink="/user/forgetPassword">{{'login.forgetPassword' | translate}}?</a></div>
+                  <div class="text-center"><a class="small"
+                      routerLink="/user/register">{{'login.create' | translate}}!</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

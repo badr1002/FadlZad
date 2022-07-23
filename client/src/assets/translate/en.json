@@ -1,0 +1,171 @@
+{
+    "Logo": "Fadel Zad",
+    "loading": "Loading...",
+    "nav": {
+        "aboutUs": "About Us",
+        "Contact": "Contact",
+        "Add": "Add New",
+        "Login": "Login",
+        "Search": "Search",
+        "Profile": "Profile",
+        "myAds": "My Ads",
+        "Dashboard": "Dashboard",
+        "Logout": "Logout",
+        "ar":"عربي",
+        "en":"Engilsh"
+    },
+    "home": {
+        "lastShared": "Last Share Ads",
+        "allAds": "All Ads",
+        "newAds": "New Ads"
+    },
+    "viewProducts": {
+        "searchByName": "Search by Name",
+        "searchByCategory": "Search by Category",
+        "createdBy": "Created by",
+        "You": "You",
+        "delete": "Delete",
+        "name": "Name",
+        "description": "Description",
+        "phone": "Phone Number",
+        "status":"Status",
+        "createdDate":"Created date",
+        "display":"Display"
+    },
+    "addNewProduct": {
+        "addnewProduct": "Add New Product",
+        "Category": "Category",
+        "chooseCategory": "Choose category",
+        "Description": "Description",
+        "addCategory": "Add category",
+        "cancel": "Cancel",
+        "addNewProduct": "Add new Product",
+        "name": "Name",
+        "img1": "Add Image1",
+        "img2": "Add Image2",
+        "img3": "Add Image3",
+        "img4": "Add Image4",
+        "img5": "Add Image5",
+        "save": "Add Product"
+    },
+    "forgetPassword": {
+        "setNewPassword": "Set new password",
+        "sentSatatusCode": "Check your email we sent you the code",
+        "code": "Code",
+        "check": "Check",
+        "set": "Set"
+    },
+    "user": {
+        "name": "Name",
+        "email": "Email",
+        "password": "Password",
+        "mobile":"Mobile",
+        "gender":"Gender",
+        "male":"Male",
+        "female":"Female",
+        "country":"Country",
+        "address":{
+            "address":"Address",
+            "city":"City",
+            "zipCode":"Zip Code",
+            "state":"State",
+            "street":"Street"
+        },
+        "createdAt":"Start date"
+    },
+    "warning": {
+        "emailRequired": "Email is Required!",
+        "invaildMail": "Email invalid format",
+        "passwordRequired": "Password is Required!",
+        "invaildPassword": "Password must be more than 6 char",
+        "nameRequired": "Name is Required!",
+        "mobileRequired": "Mobile is Required!",
+        "subjectRequired": "Subject is required!",
+        "messageRequired": "Message is required!"
+    },
+    "mail":{
+        "subject":"Subject",
+        "message":"Message",
+        "send":"Send Message"
+    },
+    "error":{
+        "activatation":"Please, check your acount we sent you activation code!",
+        "_404":"Error 404 Page not found!"
+    },
+    "login": {
+        "login": "Login",
+        "haveAccount": "Already have an account",
+        "welcome": "Welcome Back",
+        "loginGoogle": "Login with google",
+        "loginFacebook": "Login with Facebook",
+        "forgetPassword": "forget Password",
+        "create": "Create an Account"
+    },
+    "register":{
+        "registerAccount":"Register Account",
+        "registerGoogle": "Register with google",
+        "registerFacebook": "Register with Facebook"
+    },
+    "profile":{
+        "delete":"Delete",
+        "about":"About",
+        "personalDetails":"Personal Details",
+        "addCity":"Add City",
+        "addStreet":"Add Street",
+        "addZipCode":"Add Zip Code",
+        "addState":"Add State",
+        "someAbout":"Some about us" ,
+        "changePassword":"Change Password",
+        "currentPassword":"Current Password",
+        "newPassword":"New Password",
+        "update":"Update"
+
+    },
+    "contact":{
+        "contactUs":"Contact Us",
+        "location":"Location",
+        "bns":"Bani swef",
+        "street":"Salah salem Street",
+        "openAt":"Open Hours",
+        "date":"Monday-Saturday",
+        "call":"Call"
+    },
+    "about":{
+        "aboutUs":"About us page",
+        "ourGoals":"Our goal is to facilitate the delivery of charitable donations to the poor",
+        "poweredBy":"Powered by",
+        "team":"Students team",
+        "questionIdea":"What is the idea of this website?",
+        "idea":"The poor can collect only the donations he needs without going anywhere. All he has to do is enter and watch ads and communicate with the advertiser to request this donation.",
+        "showMore":"Show More",
+        "questionBenefits":"What are the benefits of creating this website?",
+        "benefits":"This is a non-profit organization, our goal is to make it easier for the poor, and every poor person only takes his needs.",
+        "ourTeam":"Our Team",
+        "happyMsg":"We are happy to contact us to submit new proposals.",
+        "frontEnd":"FrontEnd",
+        "backEnd":"BackEnd",
+        "Marwa":"Marwa",
+        "Magda":"Magda ",
+        "Hossam":"Hossam",
+        "Ahmed":"Ahmed",
+        "Fatma":"Fatma",
+        "Yasmine":"Yasmine"   
+    },
+    "admin":{
+        "adsInfo":"Ads Info",
+        "userInfo":"User Info",
+        "show":"Show",
+        "hide":"Hide",
+        "showing":"Showing",
+        "to":"to",
+        "of":"of",
+        "search":"Search",
+        "modify":"Modify",
+        "disabled":"Disabled",
+        "disable":"Disable",
+        "enable":"Enable",
+        "admin":"Admin",
+        "users": "Users",
+        "ads": "Ads"
+    }
+}

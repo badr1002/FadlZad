@@ -1,0 +1,185 @@
+<!-- <div class="container">
+  <div class="main-body">
+    <div class="row gutters-sm">
+       <form #uploaded="ngForm">
+          <input type="file" name="uploadfile" id="img"
+            style="display:none;" (change)="handleFile($event)"
+            (change)="upFile(uploaded)" />
+          <label for="img" class="image" [ngStyle]="{'background-image':
+            'url(' + image + ')', 'background-size': 'cover' }"><i
+              class="fas fa-camera icon"></i></label>
+        </form>
+    </div>
+  </div>
+</div> -->
+<div class="container">
+  <div class="row gutters">
+    <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+      <div class="card h-100">
+        <div class="card-body">
+          <div class="account-settings">
+            <div class="user-profile">
+              <div class="user-avatar">
+
+                <form #uploaded="ngForm" [formGroup]="progressForm">
+                  <input type="file" accept=".png, .jpg, .jpeg, .jfif" name="uploadfile" id="img"
+                    style="display:none;" (change)="handleFile($event)"  (change)="upFile(uploaded)"
+                    />
+                  <!-- <img src="../../../../assets/uploads/profile/avatar.png"> -->
+                  <label for="img" class="image" [ngStyle]="{'background-image':
+                    'url(' + getProfileIamge + ')', 'background-size':
+                    'cover','cursor':'pointer' }"><i
+                      class="fas fa-camera icon"></i></label>
+                  <div><button class="btn
+                      btn-outline-danger btn-sm" *ngIf="isUserImage"
+                      (click)="handleDeleteProfileImage()">{{'profile.delete' | translate}}</button></div>
+                  <div class="row" *ngIf="file">
+                    <progress class="col-9"></progress>
+                    <input class="col-3"style="background-color:
+                      rgb(246, 248, 247); border: none;"
+                      formControlName="progress">
+                  </div>
+                </form>
+              </div>
+              <h5 class="user-name text-dark">{{user?.name}}</h5>
+              <h6 class="user-email text-secondary">{{user?.email}}</h6>
+            </div>
+            <div class="about">
+              <h5>{{'profile.about' | translate}}</h5>
+              <p class="alert alert-secondary">{{user?.about}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+      <div class="card h-100">
+
+        <form class="card-body" [formGroup]="userForm">
+          <div class="row gutters">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <h4 class="mb-2 text-primary alert alert-secondary">{{'profile.personalDetails' | translate}}</h4>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label for="fullName">{{'user.name' | translate}}</label>
+                <input type="text" class="form-control" id="fullName"
+                  placeholder="{{'user.name' | translate}}" formControlName="name">
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label for="eMail">{{'user.email' | translate}}</label>
+                <input type="email" class="form-control" id="eMail"
+                  placeholder="{{user?.email}}" disabled>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label for="phone">{{'user.mobile' | translate}}</label>
+                <input type="text" class="form-control" id="phone"
+                  placeholder="{{user?.mobile}}" formControlName="mobile">
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label for="Country">{{'user.country' | translate}}</label>
+                <input type="text" class="form-control" id="Country"
+                  placeholder="{{'user.country' | translate}}" formControlName="country">
+              </div>
+            </div>
+          </div>
+          <div class="row gutters" formGroupName="address">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+              <h5 class="mt-3 mb-2 text-primary">{{'user.address.address' | translate}}</h5>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label for="Street">{{'user.address.street' | translate}}</label>
+                <input type="name" class="form-control" id="Street"
+                  placeholder="{{'profile.addStreet' | translate}}" formControlName="street">
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label for="ciTy">{{'user.address.city' | translate}}</label>
+                <input type="name" class="form-control" id="ciTy"
+                  placeholder="{{'profile.addCity' | translate}}" formControlName="city">
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label for="sTate">{{'user.address.state' | translate}}</label>
+                <input type="text" class="form-control" id="sTate"
+                  placeholder="{{'profile.addState' | translate}}" formControlName="state">
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label for="zIp">{{'user.address.zipCode' | translate}}</label>
+                <input type="text" class="form-control" id="zIp"
+                  placeholder="{{'profile.addZipCode' | translate}}" formControlName="zipCode">
+              </div>
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="row">
+              <div class="col mb-3">
+                <div class="form-group">
+                  <label>{{'profile.someAbout' | translate}}</label>
+                  <textarea class="form-control" #val rows="3" placeholder="My
+                    Bio"
+                    maxlength="150" formControlName="about"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row my-3">
+            <div class="row">
+              <div class="col mb-3">
+                <div class="form-group">
+                  <span class="input-group-text form-control-user">{{'user.gender' | translate}}</span>
+                  <label class="md-check m-2">
+                    <input type="radio" value="female" name="gender"
+                      formControlName="gender">
+                    {{'user.female' | translate}}
+                  </label>
+
+                  <label class="md-check m-2">
+                    <input type="radio" value="male" name="gender"
+                      formControlName="gender">
+                    {{'user.male' | translate}}
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-2"><b>{{'profile.changePassword' | translate}}</b></div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label>{{'profile.currentPassword' | translate}}</label>
+                <input class="form-control" type="password"
+                  placeholder="••••••" formControlName="oldPassword">
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+              <div class="form-group">
+                <label>{{'profile.newPassword' | translate}}</label>
+                <input class="form-control" type="password"
+                  placeholder="••••••" formControlName="password">
+              </div>
+            </div>
+          </div>
+
+          <div class="row gutters">
+            <div class="text-center m-3">
+              <button type="button" id="submit" name="submit" class="btn
+                btn-primary ms-2" (click)="handleUpdate($event)">{{'profile.update' | translate}}</button>
+            </div>
+            <div class="alert alert-{{alert}}" *ngIf="msg">{{msg}}</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,69 @@
+<div class="chat">
+  <div class="chat-form" *ngIf="chatFormStatus">
+    <i class="fa fa-arrow-down" (click)="closeChatForm()"></i>
+    <form class="form-group m-5 text-center" [formGroup]="contactForm"
+      (ngSubmit)="handleSendMessgae()">
+      <div class="row">
+        <div class="col-md-6 form-group">
+          <input type="text" class="form-control" placeholder=" {{'user.name' | translate}}"
+            formControlName='name'/>
+          <div class="col-12 alert alert-danger form-control-user"
+            *ngIf="contactForm.get('name')?.invalid
+            &&(contactForm.get('name')?.dirty ||
+            contactForm.get('name')?.touched)">
+            <div *ngIf="contactForm.get('name')?.errors['required']">
+               {{'warning.nameRequired' | translate}}
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 form-group mt-3 mt-md-0">
+          <input type="email" class="form-control"
+            placeholder="example@gmail.com" formControlName='email'/>
+          <div class="col-12 alert alert-danger form-control-user"
+            *ngIf="contactForm.get('email')?.invalid
+            &&(contactForm.get('email')?.dirty ||
+            contactForm.get('email')?.touched)">
+            <div *ngIf="contactForm.get('email')?.errors['required']">
+              {{'warning.emailRequired' | translate}}
+            </div>
+            <div *ngIf="contactForm.get('email')?.errors['email']">
+              {{'warning.invaildMail' | translate}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group mt-3">
+        <input type="text" class="form-control" placeholder=" {{'mail.subject' | translate}}"
+          formControlName='sub'/>
+        <div class="col-12 alert alert-danger form-control-user"
+          *ngIf="contactForm.get('sub')?.invalid
+          &&(contactForm.get('sub')?.dirty || contactForm.get('sub')?.touched)">
+          <div *ngIf="contactForm.get('sub')?.errors['required']">
+             {{'warning.subjectRequired' | translate}}
+          </div>
+        </div>
+      </div>
+      <div class="form-group mt-3">
+        <textarea
+          class="form-control"
+          rows="5"
+          placeholder="{{'mail.message' | translate}}" formControlName='message'></textarea>
+        <div class="col-12 alert alert-danger form-control-user"
+          *ngIf="contactForm.get('message')?.invalid
+          &&(contactForm.get('message')?.dirty ||
+          contactForm.get('message')?.touched)">
+          <div *ngIf="contactForm.get('message')?.errors['required']">
+           {{'warning.messageRequired' | translate}}
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary m-2" type="submit">{{'mail.send' | translate}}</button> 
+      <div *ngIf="msg" class="alert alert-{{alert}}">{{msg}}</div>
+    </form>
+  </div>
+  <img
+    *ngIf="!chatFormStatus"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Circle-icons-chat.svg/1024px-Circle-icons-chat.svg.png"
+    class="chat-icon"
+    (click)="openChatForm()">
+</div>

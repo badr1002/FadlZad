@@ -1,0 +1,125 @@
+
+<div class="container">
+  <div class="card shadow-lg o-hidden border-0 my-5">
+    <div class="card-body p-0">
+      <div class="row">
+        <div class="col-lg-5 d-none d-lg-flex">
+          <div class="flex-grow-1 bg-register-image" style="background-image:
+            url(&quot;assets/img/login.jpg&quot;); background-repeat: no-repeat;
+            background-size: auto;"></div>
+        </div>
+        <div class="col-lg-7">
+          <div class="p-5">
+            <div class="text-center">
+              <h4 class="text-dark mb-4">{{'login.create' | translate}}!</h4>
+            </div>
+            <form class="user" [formGroup]="register"
+              (ngSubmit)="handleSubmit()">
+              <div class="form-control-user alert alert-danger" *ngIf="msg">
+                {{msg}}
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text form-control-user">{{'user.name' | translate}}</span>
+                <input type="text" class="form-control form-control-user"
+                  placeholder="{{'user.name' | translate}}"
+                  formControlName="name">
+
+                <div class="col-12 alert alert-danger form-control-user"
+                  *ngIf="name?.invalid
+                  &&(name?.dirty || name?.touched)">
+                  <div *ngIf="name?.errors?.['required']">
+                      {{'warning.nameRequired' | translate}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text form-control-user"> {{'user.email' | translate}}</span>
+                <input type="email" class="form-control form-control-user"
+                  placeholder="email@example.com"
+                  formControlName="email">
+
+                <div class="col-12 alert alert-danger form-control-user"
+                  *ngIf="email?.invalid
+                  &&(email?.dirty || email?.touched)">
+                  <div *ngIf="email?.errors?.['required']">
+                    {{'warning.emailRequired' | translate}}
+                  </div>
+                  <div *ngIf="email?.errors?.['email']">
+                    {{'warning.invaildMail' | translate}}
+                  </div>
+                </div>
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text form-control-user"> {{'user.password' | translate}}</span>
+                <input type="password" class="form-control form-control-user"
+                  id="staticEmail" placeholder="******"
+                  formControlName="password">
+
+                <div class="col-12 alert alert-danger form-control-user"
+                  *ngIf="password?.invalid
+                  &&(password?.dirty || password?.touched)">
+                  <div *ngIf="password?.errors?.['required']">
+                     {{'warning.passwordRequired' | translate}}
+                  </div>
+                  <div *ngIf="password?.errors?.['minLength']">
+                   {{'warning.invaildPassword' | translate}}
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="input-group mb-3">
+                <span class="input-group-text form-control-user">  {{'user.mobile' | translate}}</span>
+                <input type="text" class="form-control form-control-user"
+                  placeholder="01234567890"
+                  formControlName="mobile">
+
+                <div class="col-12 alert alert-danger form-control-user"
+                  *ngIf="mobile?.invalid
+                  &&(mobile?.dirty || mobile?.touched)">
+                  <div *ngIf="mobile?.errors?.['required']">
+                      {{'warning.mobileRequired' | translate}}
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="input-group mb-3">
+                <span class="input-group-text form-control-user">  {{'user.gender' | translate}}</span>
+                <label class="md-check m-5">
+                  <input type="radio" value="female" name="gender"
+                    formControlName="gender">
+                  {{'user.female' | translate}}
+                </label>
+
+                <label class="md-check m-5">
+                  <input type="radio" value="male" name="gender"
+                    formControlName="gender">
+                  {{'user.male' | translate}}
+                </label>
+              </div>
+
+              <div>
+                <button class="btn btn-primary d-block btn-user w-100"
+                  type="submit"> {{'register.registerAccount' | translate}}</button>
+                <hr><a class="btn btn-primary d-block btn-google btn-user w-100
+                  mb-2" role="button"><i class="fab fa-google"></i>&nbsp;
+                  {{'register.registerGoogle' | translate}}</a><a class="btn btn-primary d-block btn-facebook
+                  btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp;
+                  {{'register.registerFacebook' | translate}}</a>
+                <hr>
+              </div>
+
+
+            </form>
+
+            <div class="text-center"><a class="small" routerLink="/user/login">{{'login.haveAccount' | translate}}? {{'login.login' | translate}}!</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

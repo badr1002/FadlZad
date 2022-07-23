@@ -1,0 +1,80 @@
+.navbar {
+  background-color: #deffe4;
+  opacity: 0.8;
+
+
+}
+.fixed-top{
+  height: 60px;
+}
+.dropdown .dropdown-menu{
+  background-color: #a2d9c2;
+}
+ .dropdown-item{
+  font-weight: 700;
+ }
+@media only screen and (max-width: 993px) {
+
+  .navbar>.container,
+  .navbar>.container-fluid,
+  .navbar>.container-sm,
+  .navbar>.container-md,
+  .navbar>.container-lg,
+  .navbar>.container-xl,
+  .navbar>.container-xxl {
+    background-color: #333;
+  }
+  .flex-row {
+    flex-direction: column !important;
+  }
+
+}
+.nav-link {
+  color: #068f61;
+  font-size: 28px;
+  margin-top: 10px;
+  padding: 20px;
+  font-weight: bold;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+.nav-link:hover{
+  color: #c98c08;
+}
+
+.profileImage{
+  width: 40px;
+  height: 40px;
+  border-radius: 25px;
+}
+
+.logo{
+  font-size: 30px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  color: rgb(6, 158, 120);
+  text-shadow: 1px 1px #b3b1b1;
+}
+.logo:hover{
+   font-size: 30px;
+   font-family:'Segoe UI',
+   Tahoma,
+   Geneva,
+   Verdana,
+   sans-serif;
+   font-weight: bold;
+   color: rgb(166, 206, 196);
+}
+
+
+.cartSpan{
+ width: 40px;
+ height: 40px;
+}
+
+@media screen and (min-width:991px) {
+  .counter {
+    position: absolute;
+    top: 35%;
+  }
+
+}
