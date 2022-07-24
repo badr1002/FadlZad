@@ -1,6 +1,6 @@
 {
     "/api": {
-        "target": "https://fadlzad.herokuapp.com/",
+        "target": "https://localhost:4201/",
         "secure": false,
         "pathRewrite": {
             "^/api": ""
@@ -8,3 +8,4 @@
         "logLevel": "debug"
     }
 }
+
