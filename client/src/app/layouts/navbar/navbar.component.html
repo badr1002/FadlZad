@@ -42,8 +42,6 @@
       </ul>
 
       <div class="d-flex flex-row-reverse bd-highlight">
-
-
         <div class="p-2 bd-highlight">
           <form class="d-flex mr-auto" [formGroup]="searchForm"
             (ngSubmit)="handleSearch()">
@@ -54,36 +52,39 @@
               | translate}}</button>
           </form>
         </div>
-
-      </div>
-    </div>
-    <div class="p-2 bd-highlight">
-      <div class="nav-item dropdown pl-2 mb-2 mb-md-0 d-flex me-2"
-        *ngIf="isLogin">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-          role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img
-            src={{getProfileIamge}}
-            class="profileImage">
-        </a>
-        <ul class="dropdown-menu text-center"
-          aria-labelledby="navbarDropdown">
-          <h3 style="color: rgb(71, 61, 4);font-weight: bold;">
-            {{user?.name}}</h3>
-
-          <li><a class="dropdown-item" style="cursor: pointer;"
-              routerLink="user/profile">{{'nav.Profile' | translate}}</a></li>
-          <li><a class="dropdown-item" style="cursor: pointer;"
-              routerLink="my-ads">{{'nav.myAds' | translate}}</a></li>
-
-          <li *ngIf="isAdmin"><a class="dropdown-item" style="cursor: pointer;"
-              routerLink="dashboard">{{'nav.Dashboard' | translate}}</a></li>
-          <li><a class="dropdown-item" style="cursor: pointer;"
-              (click)="logout($event)">{{'nav.Logout' | translate}}</a></li>
-        </ul>
       </div>
 
+       <div class="p-2 bd-highlight">
+          <div class="nav-item dropdown pl-2 mb-2 mb-md-0 d-flex me-2"
+            *ngIf="isLogin">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+              role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img
+                src={{getProfileIamge}}
+                class="profileImage">
+            </a>
+            <ul class="dropdown-menu text-center"
+              aria-labelledby="navbarDropdown">
+              <h3 style="color: rgb(71, 61, 4);font-weight: bold;">
+                {{user?.name}}</h3>
+
+              <li><a class="dropdown-item" style="cursor: pointer;"
+                  routerLink="user/profile">{{'nav.Profile' | translate}}</a></li>
+              <li><a class="dropdown-item" style="cursor: pointer;"
+                  routerLink="my-ads">{{'nav.myAds' | translate}}</a></li>
+
+              <li *ngIf="isAdmin"><a class="dropdown-item" style="cursor:
+                  pointer;"
+                  routerLink="dashboard">{{'nav.Dashboard' | translate}}</a></li>
+              <li><a class="dropdown-item" style="cursor: pointer;"
+                  (click)="logout($event)">{{'nav.Logout' | translate}}</a></li>
+            </ul>
+          </div>
+
+        </div>
+
     </div>
+
 
     <button class="navbar-toggler m-2" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarSupportedContent"
