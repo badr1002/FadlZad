@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PrimeNGConfig, SelectItem } from 'primeng/api';
-import { UserService } from '../../user/user.service';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 
@@ -25,7 +24,6 @@ export class SearchProductsComponent implements OnInit {
   count: number;
   rows: number = 9;
   first: number = 0;
-  user: any
   alert: any
   msg: any
   loading: boolean = true
@@ -36,7 +34,6 @@ export class SearchProductsComponent implements OnInit {
     private route: Router
 
   ) {
-    this.user = JSON.parse(localStorage.getItem('user'))
   }
   ngOnInit() {
     this.productService.searchProductByName(this._route.snapshot.params['search_term']).subscribe((res) => {
@@ -78,6 +75,7 @@ export class SearchProductsComponent implements OnInit {
 
     
     this.sortCategoryOptions = [
+      { label: "All Categories", value: null }
       
     ];
 
@@ -90,7 +88,10 @@ export class SearchProductsComponent implements OnInit {
   onSortChange(event: any) {
     let value = event.value;
 
-    if (value.indexOf('!') === 0) {
+    if (!value) {
+      this.sortedProdect = this.products
+    }
+    else if (value.indexOf('!') === 0) {
       this.sortOrder = -1;
       this.sortField = value.substring(1, value.length);
     } else {

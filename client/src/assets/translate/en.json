@@ -77,9 +77,10 @@
         "emailRequired": "Email is Required!",
         "invaildMail": "Email invalid format",
         "passwordRequired": "Password is Required!",
-        "invaildPassword": "Password must be more than 6 char",
+        "invaildPassword": "Password must be more than 6 char and at lest upper and lower and one special char",
         "nameRequired": "Name is Required!",
         "mobileRequired": "Mobile is Required!",
+        "mobileInvalid":"Invalid Mobile Number",
         "subjectRequired": "Subject is required!",
         "messageRequired": "Message is required!"
     },
@@ -167,5 +168,20 @@
         "admin":"Admin",
         "users": "Users",
         "ads": "Ads"
-    }
+    },
+    "#1.0.0": "There is something wrong Check The mobile Number Or Other Fields!",
+    "#1.1.0": "There is something wrong!",
+    "#1.1.1": "This email is not found!",
+    "#1.1.2": "Invalid password!",
+    "#1.1.3": "This email is already exist!",
+    "#1.1.4": "This mobile is used before!",
+    "#1.1.5": "Your account is blocked Please, contact with us to reenable it!",
+    "#1.1.6": "This user is not found!",
+    "#1.1.7": "Users are not found!",
+    "#1.1.8": "Please, add new password!",
+    "#1.1.9": "Please, Use deffirant password!",
+    "#1.2.0": "Can't get products!",
+    "#1.2.1": "Can't get this product!",
+    "#1.2.2": "Can't get categories!",
+    "#1.2.3": "This category name is already exist!"
 }

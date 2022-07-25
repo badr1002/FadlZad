@@ -75,6 +75,7 @@ export class MyProductsComponent implements OnInit {
     );
 
     this.sortCategoryOptions = [
+      { label: "All Categories", value: null }
     ];
 
     this.primengConfig.ripple = true;
@@ -86,7 +87,10 @@ export class MyProductsComponent implements OnInit {
   onSortChange(event: any) {
     let value = event.value;
 
-    if (value.indexOf('!') === 0) {
+    if (!value) {
+      this.sortedProdect = this.products
+    }
+    else if (value.indexOf('!') === 0) {
       this.sortOrder = -1;
       this.sortField = value.substring(1, value.length);
     } else {

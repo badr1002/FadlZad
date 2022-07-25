@@ -49,7 +49,7 @@ export class NavbarComponent implements OnInit, AfterContentChecked {
 
   handleSearch() {
     if (this.search_term != '') {
-      window.location.assign(`/search/${this.search_term}`);
+      window.location.assign(`search/${this.search_term}`);
     }
   }
   ngAfterContentChecked() { }

@@ -71,8 +71,8 @@
                                     <div class="col-lg-1">
                                      
                                 </div>
-                                    <div class="alert alert-{{alert}}"
-                                        *ngIf="msg">{{msg}}</div>
+                                    <div class="alert alert-{{alert}} text-center"
+                                        *ngIf="msg">{{msg | translate}}</div>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                                 btn-primary ms-2"
                                 (click)="addProduct($event)">{{'addNewProduct.save' | translate}}</button>
                         </div>
-                        <div class="alert alert-{{alert}}" *ngIf="msg">{{msg}}</div>
+                        <div class="alert alert-{{alert}}" *ngIf="msg">{{msg | translate}}</div>
                     </div>
                 </form>
             </div>

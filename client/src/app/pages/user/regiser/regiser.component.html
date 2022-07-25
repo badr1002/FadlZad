@@ -15,8 +15,8 @@
             </div>
             <form class="user" [formGroup]="register"
               (ngSubmit)="handleSubmit()">
-              <div class="form-control-user alert alert-danger" *ngIf="msg">
-                {{msg}}
+              <div class="form-control-user alert alert-danger text-center" *ngIf="msg">
+                {{msg | translate}}
               </div>
 
               <div class="input-group mb-3">
@@ -64,7 +64,7 @@
                   <div *ngIf="password?.errors?.['required']">
                      {{'warning.passwordRequired' | translate}}
                   </div>
-                  <div *ngIf="password?.errors?.['minLength']">
+                  <div *ngIf="password?.errors?.['minlength'] || password?.errors?.['pattern']">
                    {{'warning.invaildPassword' | translate}}
                   </div>
                 </div>
@@ -83,6 +83,10 @@
                   <div *ngIf="mobile?.errors?.['required']">
                       {{'warning.mobileRequired' | translate}}
                   </div>
+                   <div *ngIf="mobile?.errors?.['minlength'] || mobile?.errors?.['maxlength'] || mobile?.errors?.['pattern']">
+                      {{'warning.mobileInvalid' | translate}}
+                  </div>
+                  
 
                 </div>
               </div>

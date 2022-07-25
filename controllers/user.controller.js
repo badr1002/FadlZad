@@ -11,9 +11,9 @@ class User {
     static register = async (req, res) => {
         try {
             const checkEmail = await userModel.findOne({ email: req.body.email })
-            if (checkEmail) throw new Error('this email is already exist!')
+            if (checkEmail) throw new Error('#1.1.3')
             const checkMobile = await userModel.findOne({ mobile: req.body.mobile })
-            if (checkMobile) throw new Error('this mobile is used before!')
+            if (checkMobile) throw new Error('#1.1.4')
             const user = new userModel(req.body);
             await user.save();
             res.status(200).send({
@@ -24,7 +24,7 @@ class User {
         catch (e) {
             res.status(500).send({
                 apiStatus: false,
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.0.0"
             });
         }
     }
@@ -58,7 +58,7 @@ class User {
                 
             }
             else if (!user.status) {
-                throw new Error("Your account is blocked Please, contact with us to reenable it!")
+                throw new Error("#1.1.5")
             }
             await user.save();
             let token = await user.generateToken()
@@ -77,7 +77,7 @@ class User {
             res.status(500).send({
                 apiStatus: false,
                 msg: "login faild!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
@@ -95,7 +95,7 @@ class User {
             res.status(500).send({
                 apiStatus: false,
                 msg: "activation faild!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
@@ -115,7 +115,7 @@ class User {
             res.status(500).send({
                 apiStatus: false,
                 msg: "logout faild!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
@@ -135,7 +135,7 @@ class User {
             res.status(500).send({
                 apiStatus: false,
                 msg: "logoutAll faild!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
@@ -156,7 +156,7 @@ class User {
     static getUserByid = async (req, res) => {
         try {
             const user = await userModel.findOne({ _id: req.params.id });
-            if (!user) throw new Error('user not found')
+            if (!user) throw new Error('#1.1.6')
             let _user = user.toObject()
             delete _user.password
 
@@ -171,14 +171,14 @@ class User {
             res.status(500).send({
                 apiStatus: false,
                 msg: "get user by id faild!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
     static getAllUsers = async (req, res) => {
         try {
             const users = await userModel.find();
-            if (!users) throw new Error('users not found')
+            if (!users) throw new Error('#1.1.7')
             let _users = users.map(a => {
                 let user = a.toObject()
                 delete user.password
@@ -196,7 +196,7 @@ class User {
             res.status(500).send({
                 apiStatus: false,
                 msg: "get all users faild!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
@@ -217,11 +217,11 @@ class User {
         try {
             const data = req.body;
             const user = await userModel.findById(req.user._id)
-            if (!user) throw new Error('user not found')
+            if (!user) throw new Error('#1.1.6')
             else if (data.oldPassword && data.password) {
                 const valid = await bcrypt.compare(data.oldPassword, user.password)
-                if (!valid) throw new Error('invalid password!')
-                if (data.oldPassword == data.password) throw new Error("Enter a new password")
+                if (!valid) throw new Error('#1.1.2')
+                if (data.oldPassword == data.password) throw new Error("#1.1.8")
                 user.password = data.password
             }
             user.name = data.name
@@ -247,7 +247,7 @@ class User {
             res.status(500).send({
                 apiStatus: false,
                 msg: "updaeted faild!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
@@ -255,7 +255,7 @@ class User {
     static editProfileImage = async (req, res) => {
         try {
             const user = await userModel.findById(req.user._id)
-            if (!user) throw new Error('user not found')
+            if (!user) throw new Error('#1.1.6')
             user.image = req.body.link
             await user.save()
             let _user = user.toObject()
@@ -272,7 +272,7 @@ class User {
             res.status(504).send({
                 apiStatus: true,
                 msg: "updated Profile image  faild",
-                data: err.message
+                data: err.message.toString()[0] == "#"? e.message : "#1.1.0"
             })
         }
     }
@@ -280,7 +280,7 @@ class User {
     static deleteProfileImage = async (req, res) => {
         try {
             const user = await userModel.findById(req.user._id)
-            if (!user) throw new Error('user not found')
+            if (!user) throw new Error('#1.1.6')
             user.image = null
             await user.save()
             let _user = user.toObject()
@@ -297,14 +297,14 @@ class User {
             res.status(500).send({
                 apiStatus: false,
                 msg: "updaeted faild!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
     static enableUser = async (req, res) => {
         try {
             const user = await userModel.findById(req.body.id);
-            if (!user) throw new Error("user not found!");
+            if (!user) throw new Error("#1.1.6");
             user.status = true;
             user.updatedAt = Date.now();
             await user.save();
@@ -317,7 +317,7 @@ class User {
             res.status(500).send({
                 apiStatus: false,
                 msg: "Enabled user faild!",
-                data: e.message,
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0",
             });
         }
     };
@@ -325,7 +325,7 @@ class User {
     static disableUser = async (req, res) => {
         try {
             const user = await userModel.findById(req.body.id);
-            if (!user) throw new Error("user not found!");
+            if (!user) throw new Error("#1.1.6");
             user.status = false;
             user.updatedAt = Date.now();
             await user.save();
@@ -338,7 +338,7 @@ class User {
             res.status(500).send({
                 apiStatus: false,
                 msg: "Disabled user faild!",
-                data: e.message,
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0",
             });
         }
     };
@@ -346,7 +346,7 @@ class User {
     static getPassword = async (req, res) => {
         try {
             const user = await userModel.findOne({ email: req.body.email })
-            if (!user) throw new Error('email not found!')
+            if (!user) throw new Error('#1.1.1')
             await hepler.sendMailerToSetNewPassword(user._id.toString(), req.body.email)
             res.status(200).send({
                 apiStatus: true,
@@ -358,7 +358,7 @@ class User {
             res.status(500).send({
                 apiStatus: false,
                 msg: "updaeted faild!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
@@ -366,7 +366,7 @@ class User {
     static checkCode = async (req, res) => {
         try {
             const user = await userModel.findOne({ _id: req.body.code })
-            if (!user) throw new Error('user not found!')
+            if (!user) throw new Error('#1.1.6')
             let token = await user.generateToken();
 
             res.status(200).send({
@@ -379,7 +379,7 @@ class User {
             res.status(500).send({
                 apiStatus: false,
                 msg: "invalid code!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
@@ -387,9 +387,9 @@ class User {
     static setPassword = async (req, res) => {
         try {
             const user = await userModel.findById(req.user._id)
-            if (!user) throw new Error('user not found!')
+            if (!user) throw new Error('#1.1.6')
             const valid = await bcrypt.compare(req.body.password, user.password)
-            if (valid) throw new Error('User deffirant password!')
+            if (valid) throw new Error('#1.1.9')
             user.password = req.body.password
             user.save();
             let _user = user.toObject()
@@ -407,7 +407,7 @@ class User {
             res.status(500).send({
                 apiStatus: false,
                 msg: "updaeted faild!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }

@@ -14,14 +14,14 @@ class Product {
 
             if (req.query.limit) {
                 var products = await productModel.find({ status: true }).limit(req.query.limit)
-                if (!products) throw new Error("Can't get products!")
+                if (!products) throw new Error("#1.2.0")
             } else if (req.query.admin) {
                 var products = await productModel.find()
-                if (!products) throw new Error("Can't get products!")
+                if (!products) throw new Error("#1.2.0")
             }
             else {
                 var products = await productModel.find({ status: true })
-                if (!products) throw new Error("Can't get products!")
+                if (!products) throw new Error("#1.2.0")
             }
             res.status(200).send({
                 apiStatus: true,
@@ -33,14 +33,14 @@ class Product {
             res.status(500).send({
                 apiStatus: false,
                 msg: "can't get all products!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
     static getAllProductsForAdmin = async (req, res) => {
         try {
             var products = await productModel.find()
-            if (!products) throw new Error("Can't get products!")
+            if (!products) throw new Error("#1.2.0")
             res.status(200).send({
                 apiStatus: true,
                 msg: "All products fetched",
@@ -51,14 +51,14 @@ class Product {
             res.status(500).send({
                 apiStatus: false,
                 msg: "can't get all products!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
     static getProductById = async (req, res) => {
         try {
             const product = await productModel.findOne({ _id: req.params.id })
-            if (!product) throw new Error("Can't get product!")
+            if (!product) throw new Error("#1.2.1")
             res.status(200).send({
                 apiStatus: true,
                 msg: "product fetched",
@@ -69,7 +69,7 @@ class Product {
             res.status(500).send({
                 apiStatus: false,
                 msg: "can't get product!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
@@ -80,7 +80,7 @@ class Product {
                 name: req.user.name
             }
             const products = await productModel.find({ uploadedWith: user })
-            if (!products) throw new Error("Can't get products by user id!")
+            if (!products) throw new Error("#1.2.1")
             res.status(200).send({
                 apiStatus: true,
                 msg: "products fetched",
@@ -91,7 +91,7 @@ class Product {
             res.status(500).send({
                 apiStatus: false,
                 msg: "Can't get products by user id!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
@@ -100,7 +100,7 @@ class Product {
 
             const products = await productModel.find({ name: { $regex: new RegExp(".*" + req.params.search_term + ".*", "i") }, status: true })
             //  const products = await productModel.find({ name: { $regex: new RegExp("^" + req.params.search_term + "$", "i") } })
-            if (!products) throw new Error("Can't get products by user id!")
+            if (!products) throw new Error("#1.2.1")
             res.status(200).send({
                 apiStatus: true,
                 msg: "products fetched",
@@ -111,7 +111,7 @@ class Product {
             res.status(500).send({
                 apiStatus: false,
                 msg: "Can't get products by user id!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
@@ -138,7 +138,7 @@ class Product {
             res.status(500).send({
                 apiStatus: false,
                 msg: "addation product faild!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
@@ -156,7 +156,7 @@ class Product {
             res.status(500).send({
                 apiStatus: false,
                 msg: "Deleted product faild!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
@@ -164,7 +164,7 @@ class Product {
     static editProduct = async (req, res) => {
         try {
             const product = await productModel.findOne({ _id: req.body._id })
-            if (!product) throw new Error("Can't get products!")
+            if (!product) throw new Error("#1.2.0")
             product.description = req.body.description
             product.images = req.body.images
             product.name = req.body.name
@@ -179,14 +179,14 @@ class Product {
             res.status(500).send({
                 apiStatus: false,
                 msg: "Edit product faild!",
-                data: err.message,
+                data: err.message.toString()[0] == "#"? e.message : "#1.1.0",
             });
         }
     }
     static enableProduct = async (req, res) => {
         try {
             const product = await productModel.findById(req.body.id);
-            if (!product) throw new Error("product not found!");
+            if (!product) throw new Error("#1.2.1");
             product.status = true;
             product.updatedAt = Date.now();
             await product.save();
@@ -199,7 +199,7 @@ class Product {
             res.status(500).send({
                 apiStatus: false,
                 msg: "Enabled product faild!",
-                data: e.message,
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0",
             });
         }
     };
@@ -207,7 +207,7 @@ class Product {
     static disableProduct = async (req, res) => {
         try {
             const product = await productModel.findById(req.body.id);
-            if (!product) throw new Error("product not found!");
+            if (!product) throw new Error("#1.2.1");
             product.status = false;
             product.updatedAt = Date.now();
             await product.save();
@@ -220,7 +220,7 @@ class Product {
             res.status(500).send({
                 apiStatus: false,
                 msg: "Disabled product faild!",
-                data: e.message,
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0",
             });
         }
     };

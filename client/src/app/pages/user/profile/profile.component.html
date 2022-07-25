@@ -177,7 +177,7 @@
               <button type="button" id="submit" name="submit" class="btn
                 btn-primary ms-2" (click)="handleUpdate($event)">{{'profile.update' | translate}}</button>
             </div>
-            <div class="alert alert-{{alert}}" *ngIf="msg">{{msg}}</div>
+            <div class="alert alert-{{alert}} text-center" *ngIf="msg">{{msg | translate}}</div>
           </div>
         </form>
       </div>

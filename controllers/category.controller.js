@@ -5,7 +5,7 @@ class Category {
     static getAllCategories = async (req, res) => {
         try {
             const categories = await categoryModel.find()
-            if (!categories) throw new Error("Can't get categories!")
+            if (!categories) throw new Error("#1.2.2")
             res.status(200).send({
                 apiStatus: true,
                 msg: "All categories fetched",
@@ -16,7 +16,7 @@ class Category {
             res.status(500).send({
                 apiStatus: false,
                 msg: "can't get all categories!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }
@@ -24,7 +24,7 @@ class Category {
     static addCategory = async (req, res) => {
         try {
             const category = await categoryModel.findOne({ name: req.body.name })
-            if (category) throw new Error('This category name is already exist!')
+            if (category) throw new Error('#1.2.3')
             const addCategory = await new categoryModel(req.body)
             await addCategory.save()
             res.status(200).send({
@@ -37,7 +37,7 @@ class Category {
             res.status(500).send({
                 apiStatus: false,
                 msg: "addation category faild!",
-                data: e.message
+                data: e.message.toString()[0] == "#"? e.message : "#1.1.0"
             });
         }
     }

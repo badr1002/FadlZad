@@ -19,8 +19,10 @@ export class RegisterComponent implements OnInit {
       Validators.required,
       Validators.minLength(6),
       Validators.maxLength(20),
+      Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$")
     ]),
-    mobile: new FormControl('', [Validators.required]),
+    mobile: new FormControl('', [Validators.required, Validators.pattern("^01[0-2,5]{1}[0-9]{8}$"),
+      Validators.minLength(11), Validators.maxLength(11)]),
     gender: new FormControl('', [Validators.required]),
    });
 

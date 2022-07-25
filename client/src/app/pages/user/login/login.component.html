@@ -20,9 +20,9 @@
                     (ngSubmit)="handleSubmit()">
                     <div class="mb-3">
 
-                      <div class="form-control-user alert alert-danger"
+                      <div class="form-control-user alert alert-danger text-center"
                         *ngIf="msg">
-                        {{msg}}
+                        {{msg | translate}}
                       </div>
 
                       <div class="input-group mb-3">
@@ -57,7 +57,7 @@
                           <div *ngIf="password?.errors?.['required']">
                              {{'warning.passwordRequired' | translate}}
                           </div>
-                          <div *ngIf="password?.errors?.['minLength']">
+                          <div *ngIf="password?.errors?.['minlength'] || password?.errors?.['pattern']">
                            {{'warning.invaildPassword' | translate}}
                           </div>
                         </div>

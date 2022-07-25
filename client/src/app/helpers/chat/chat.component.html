@@ -58,7 +58,7 @@
         </div>
       </div>
       <button class="btn btn-primary m-2" type="submit">{{'mail.send' | translate}}</button> 
-      <div *ngIf="msg" class="alert alert-{{alert}}">{{msg}}</div>
+      <div *ngIf="msg" class="alert alert-{{alert}} text-center">{{msg | translate}}</div>
     </form>
   </div>
   <img

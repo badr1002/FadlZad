@@ -15,10 +15,10 @@ const userSchema = mongoose.Schema(
       trim: true,
       required: true,
       unique: true,
-      validate(value) {
-        if (!validator.isEmail(value)) throw "invalid email!"
-          //throw new Error("invalid email!");
-      },
+      // validate(value) {
+      //   if (!validator.isEmail(value)) throw new Error("invalid email!");
+          
+      // },
     },
     password: { type: String, trim: true, required: true, min: 6, max: 50 },
     mobile: {
@@ -70,10 +70,10 @@ userSchema.pre("save", async function () {
 userSchema.statics.findUser = async (email, password) => {
   const user = await User.findOne({ email });
   if (!user)
-    throw new Error('email not found!')
+    throw new Error('#1.1.1')
   const isValid = await bcrypt.compare(password, user.password);
   if (!isValid)
-    throw new Error('invalid password!')
+    throw new Error('#1.1.2')
   return user
 }
 

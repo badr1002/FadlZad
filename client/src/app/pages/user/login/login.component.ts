@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
       Validators.required,
       Validators.minLength(6),
       Validators.maxLength(20),
+      Validators.pattern("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$")
     ])
   });
   get email() {

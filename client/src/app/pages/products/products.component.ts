@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit {
   @ViewChild('dt') dt: DataView | undefined;
 
   products: Product[];
-  sortedProdect:Product[]
+  sortedProdect: Product[]
   sortCategoryOptions: SelectItem[];
   // dt: any;
   sortOrder: number;
@@ -23,7 +23,7 @@ export class ProductsComponent implements OnInit {
   count: number;
   rows: number = 9;
   first: number = 0;
-   
+
   alert: any
   msg: any
   loading: boolean = true
@@ -33,7 +33,7 @@ export class ProductsComponent implements OnInit {
     private _route: Router
 
   ) { }
-  ngOnInit() {  
+  ngOnInit() {
     this.productService.getAllProducts().subscribe((res) => {
       if (res.apiStatus) {
         this.products = res.data;
@@ -64,9 +64,9 @@ export class ProductsComponent implements OnInit {
       }
     );
 
-    
+
     this.sortCategoryOptions = [
-    
+      { label: "All Categories", value: null }
     ];
 
     this.primengConfig.ripple = true;
@@ -77,18 +77,20 @@ export class ProductsComponent implements OnInit {
 
   onSortChange(event: any) {
     let value = event.value;
-
-    if (value.indexOf('!') === 0) {
+    if (!value) {
+      this.sortedProdect = this.products
+    }
+    else if (value.indexOf('!') === 0) {
       this.sortOrder = -1;
       this.sortField = value.substring(1, value.length);
     } else {
       this.sortOrder = 1;
       this.sortField = value;
       this.sortedProdect = this.products;
-      this.sortedProdect = this.sortedProdect.filter(a=> a.type == value )
+      this.sortedProdect = this.sortedProdect.filter(a => a.type == value)
     }
   }
-   
+
   openProductView(id: any) {
     this._route.navigateByUrl('/product/' + id)
   }

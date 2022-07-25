@@ -4,7 +4,7 @@
 
 <div class="card m-5">
     <div class="m-5">
-        <div class="alert alert-{{alert}}" *ngIf="msg">{{msg}}</div>
+        <div class="alert alert-{{alert}} text-center" *ngIf="msg">{{msg | translate}}</div>
 
     </div>
     <p-dataView #dv [value]="sortedProdect" [paginator]="true" [first]="first"
