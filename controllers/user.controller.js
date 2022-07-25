@@ -31,9 +31,9 @@ class User {
     static generateActivationCode = async (user) => {
         try {
             user.activeKey = user._id.toString()
-            //    let creationDate = moment().utc().format('YYYY-MM-DD hh:mm:ss A Z')
-            //   const _activationCode = new activationCodeModel({ code: user.activeKey, email: user.email, creationDate })
-            //  await _activationCode.save()
+            let creationDate = moment().format('YYYY-MM-DD hh:mm:ss')
+            const _activationCode = new activationCodeModel({ code: user.activeKey, email: user.email, creationDate })
+            await _activationCode.save()
             await hepler.sendMailToActiveAcoount(user.activeKey, user.email)
         } catch (err) {
             console.log(err);
@@ -42,18 +42,20 @@ class User {
     static login = async (req, res) => {
         try {
             const user = await userModel.findUser(req.body.email, req.body.password);
-            // const activationCode = await activationCodeModel.findOne({ email: user.email });
+            const activationCode = await activationCodeModel.findOne({ email: user.email });
             if (!user.activate) {
-                // if (!activationCode) {
-                //     await this.generateActivationCode(user)
-                // }
-                await this.generateActivationCode(user)
-                // let creationDate = new Date(activationCode.toObject().creationDate).getHours()
-                // let currentDate = new Date(moment().utc().format('YYYY-MM-DD hh:mm:ss A Z')).getHours()
-                // if (!currentDate - creationDate > 3) {
-                //     await activationCodeModel.deleteOne(activationCode)
-                //     await this.generateActivationCode(user)
-                // }
+                if (!activationCode) {
+                    await this.generateActivationCode(user)
+                } else {
+                    let creationDate = activationCode.toObject().creationDate
+                    let currentDate = moment(moment().format('YYYY-MM-DD hh:mm:ss'))
+                    var diff = currentDate.diff(creationDate, 'hours');
+                    if (diff > 3) {
+                        await activationCodeModel.deleteOne(activationCode)
+                        await this.generateActivationCode(user)
+                    }
+                }
+                
             }
             else if (!user.status) {
                 throw new Error("Your account is blocked Please, contact with us to reenable it!")
@@ -289,7 +291,7 @@ class User {
             res.status(200).send({
                 apiStatus: true,
                 msg: "deleted successfully",
-                data: {_user}
+                data: { _user }
             });
         } catch (e) {
             res.status(500).send({
