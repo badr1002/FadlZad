@@ -4,7 +4,7 @@
   "description": "This README would normally document whatever steps are necessary to get your application up and running.",
   "main": "index.js",
   "scripts": {
-    "heroku-postbuild1": "cd frontend && npm install && npm start ",
+    "heroku-postbuild": "cd frontend && npm install && npm start ",
     "heroku-postbuild2": "cd backend && npm install && npm start ",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
