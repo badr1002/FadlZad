@@ -6,8 +6,7 @@ import {
   ref,
   uploadBytesResumable,
   getDownloadURL,
-  deleteObject,
-  FirebaseStorage
+  deleteObject
 } from '@angular/fire/storage';
 
 @Injectable({
